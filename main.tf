@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "mohid-terraform-s3-demo-12345"
+  bucket = "project29-s3-bucket-123"
   acl    = "private"
 
   tags = {
