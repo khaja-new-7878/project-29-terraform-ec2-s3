@@ -24,7 +24,7 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-0861f4e788f5069dd" # Amazon Linux 2 AMI
+  ami           = "ami-02d26659fd82cf299" 
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
