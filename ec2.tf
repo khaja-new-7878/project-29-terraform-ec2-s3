@@ -21,14 +21,18 @@ resource "aws_security_group" "ec2_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = "project29-ec2-sg"
+  }
 }
 
-resource "aws_instance" "web" {
-  ami           = "ami-02d26659fd82cf299" 
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.public.id
+resource "aws_instance" "project29_ec2" {
+  ami                    = "ami-0c02fb55956c7d316"   # Amazon Linux 2
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  key_name      = "mykey"
+  key_name               = "mykey" # replace with your AWS key pair
 
   user_data = file("userdata.sh")
 
@@ -36,4 +40,5 @@ resource "aws_instance" "web" {
     Name = "project29-web"
   }
 }
+
 
