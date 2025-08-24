@@ -1,5 +1,5 @@
 resource "aws_instance" "example" {
-  ami           = "ami-03f4878755434977f"   # Amazon Linux 2 AMI for ap-south-1
+  ami           = "ami-0123456789abcdef0"
   instance_type = "t2.micro"
 
   tags = {
