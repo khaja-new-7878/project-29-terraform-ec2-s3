@@ -7,11 +7,3 @@ resource "aws_instance" "example" {
   }
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = "project29-s3-bucket-123"
-  aws_s3_bucket_acl    = "private"
-
-  tags = {
-    Name = "Terraform-S3"
-  }
-}
