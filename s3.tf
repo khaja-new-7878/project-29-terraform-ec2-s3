@@ -6,11 +6,6 @@ resource "aws_s3_bucket" "project29_bucket" {
   }
 }
 
-resource "aws_s3_bucket_acl" "project29_acl" {
-  bucket = aws_s3_bucket.project29_bucket.id
-  acl    = "private"
-}
-
 resource "aws_s3_bucket_versioning" "project29_versioning" {
   bucket = aws_s3_bucket.project29_bucket.id
 
