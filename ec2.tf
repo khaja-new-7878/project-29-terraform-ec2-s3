@@ -1,3 +1,4 @@
+# Security group for EC2
 resource "aws_security_group" "ec2_sg" {
   vpc_id = aws_vpc.main.id
 
@@ -27,6 +28,7 @@ resource "aws_security_group" "ec2_sg" {
   }
 }
 
+# Single EC2 instance
 resource "aws_instance" "project29_ec2" {
   ami           = data.aws_ami.amazon_linux2.id
   instance_type = "t2.micro"
@@ -37,15 +39,4 @@ resource "aws_instance" "project29_ec2" {
   user_data = file("userdata.sh")
 
   tags = {
-    Name = "project29-web"
-  }
-}
-
-output "project29_ec2_public_ip" {
-  value = aws_instance.project29_ec2.public_ip
-}
-
-output "project29_ec2_dns" {
-  value = aws_instance.project29_ec2.public_dns
-}
 
