@@ -3,13 +3,13 @@ terraform {
   backend "s3" {
     bucket         = "terraform-backend-bucket-123"
     key            = "project29/terraform.tfstate"
-    region         = "ap-south-1"
+    region         = "us-east-1"     # ✅ fix here
     dynamodb_table = "terraform-locks"
     encrypt        = true
   }
 }
 
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-1"
 }
 
