@@ -28,7 +28,7 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 resource "aws_instance" "project29_ec2" {
-  ami                    = "ami-02d26659fd82cf299"   # UBUNTU Linux 2 for ap-south-1
+  ami                    = "ami-0006460c3ae9e3f07"   # UBUNTU Linux 2 for ap-south-1
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
