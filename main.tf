@@ -1,26 +1,20 @@
-# Fetch the latest Amazon Linux 2 AMI dynamically
+provider "aws" {
+  region = "ap-south-1"
+}
+
+# Get latest Amazon Linux 2 AMI
 data "aws_ami" "amazon_linux2" {
   most_recent = true
-  owners      = ["841932493636"] # Amazon official account ID
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]  # General purpose volumes
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 
   filter {
     name   = "state"
     values = ["available"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
   }
 }
 

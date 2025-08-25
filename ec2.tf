@@ -1,6 +1,7 @@
-# Security group for EC2
+# Security Group
 resource "aws_security_group" "ec2_sg" {
   vpc_id = aws_vpc.main.id
+  name   = "project29-ec2-sg"
 
   ingress {
     from_port   = 22
@@ -22,19 +23,16 @@ resource "aws_security_group" "ec2_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags = {
-    Name = "project29-ec2-sg"
-  }
 }
 
-# Single EC2 instance
+# EC2 Instance
 resource "aws_instance" "project29_ec2" {
-  ami           = data.aws_ami.amazon_linux2.id
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.public.id
-  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  key_name      = "project-3"
+  ami                         = data.aws_ami.amazon_linux2.id
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.public.id
+  vpc_security_group_ids      = [aws_security_group.ec2_sg.id]
+  associate_public_ip_address = true
+  key_name                    = "project-29-key" # <-- must exist in AWS
 
   user_data = file("userdata.sh")
 
